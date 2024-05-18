@@ -2,7 +2,6 @@
 ### 복잡도와 구현 방법 위주로. 보통 단순 면접 질문보다는 라이브 코딩에서 검증 
 - Sort: Quick, Heap, Merge, Radix 등
 - Search: Binary Search 등
-
 - DP
 - Greedy
 - Divide and Conquer
@@ -34,9 +33,7 @@
 - 트랜잭션(ACID)
 - 트랜잭션 격리수준(Read Uncommitted ~ Serializable)
 - 테이블 설계(쿼리, 다대다 관계 등)
-
 - RDBMS vs NoSQL
-
 - 대표적인 NoSQL 
 
  
@@ -62,9 +59,7 @@
 - OSI 7계층(의미)
 - TCP: Handshake, 흐름제어, 혼잡제어
 - UDP
-
 - http(메서드, 상태코드 등)
-
 - http vs https
 - DNS
 - 게이트웨이
@@ -114,19 +109,14 @@
 - Auto Boxing & UnBoxing
 - Error vs Exception
 - Checked vs UnChecked Exception
-
 - 비동기처리 문법 비교
-
 - Java 8의 특징
-
 - Lambda(+ Functional Interface)
 - Stream API
-
 - Default Method
 - Generic
 - Reflection(Annotation)
 - Collection Framework(List, Map, Set 등) 
-
 - HashMap(https://d2.naver.com/helloworld/831311)
 - Abstract Class vs Interface(default method)
 - CountDownLatch & CyclicBarrier
@@ -144,9 +134,7 @@
 - Spring vs Spring Boot
 - @SpringBootApplication의 내부 구성
 - @Controller vs @RestController
-
 - Spring Security의 요청 처리 과정
-
 - (JPA) JPA와 Hibernate
 - (JPA) 영속성 컨텍스트(캐시, 동일성보장, 변경감지, 트랜잭션 지연)
 - (JPA) Eager, Lazy Loading
