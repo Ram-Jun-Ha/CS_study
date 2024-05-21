@@ -30,26 +30,26 @@
 - Key Value DB
     - 키를 고유한 식별자로 사용하는 키-값 페어의 컬렉션으로 데이터를 저장하며 키는 어떤 형태의 데이터라도 담을 수 있음
     - 대표적 : Redis, Riak..
-
-    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/b37b3010-6407-4757-92de-60ec7d3f70e2/19c8aad0-0e1d-4330-b20f-6254eaf390d6/Untitled.png)
+![img.png](img.png)
+   
 
 - Document DB
     - 키-도큐먼트 형태로 저장
     - 대표적 : MongoDB
 
-    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/b37b3010-6407-4757-92de-60ec7d3f70e2/8ff6ea98-bdf5-4c2d-a79a-c4513762e873/Untitled.png)
+![img_2.png](img_2.png)  
 
 - Graph DB
     - 노드와 엣지를 사용하여 그래프 구조로 데이터를 표현하고 저장
     - 대표적 : Neo4J
+![img_3.png](img_3.png)
 
-    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/b37b3010-6407-4757-92de-60ec7d3f70e2/b8373783-dbd9-4bd9-8a08-fe4c0658c8e0/Untitled.png)
 
 - Column_family
     - rdbms와 같은 용어를 사용하나 컬럼들을 묶어 컬럼 패밀리를 만들 수 있음
     - 대표적 : HBase
-
-    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/b37b3010-6407-4757-92de-60ec7d3f70e2/86a4871e-e3a9-4c5c-a8ff-9432932cc41d/Untitled.png)
+![img_1.png](img_1.png)
+  
 
 
   참조 : https://www.guru99.com/ko/nosql-tutorial.html,
