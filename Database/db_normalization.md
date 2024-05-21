@@ -138,3 +138,10 @@ BCNF 정규화를 완료한 테이블에서, **다치 종속(Multi-valued Depend
 <p align="center">
 <img src="./img/스크린샷 2024-05-21 오후 6.40.30.png" alt="img1" width="300"/>
 </p>
+
+---
+
+*출처*
+*https://hstory0208.tistory.com/entry/%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4-%EC%A0%95%EA%B7%9C%ED%99%94Normalization%EB%9E%80-%EC%98%88%EC%8B%9C%EB%A5%BC-%ED%86%B5%ED%95%B4-%EC%89%BD%EA%B2%8C-%EC%9D%B4%ED%95%B4%ED%95%B4%EB%B3%B4%EC%9E%90*
+*https://mangkyu.tistory.com/110*
+*https://velog.io/@wisdom-one/%EC%A0%95%EA%B7%9C%ED%99%94Normalization*
