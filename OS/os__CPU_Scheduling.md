@@ -64,3 +64,12 @@
   
 >문맥 교환이 일어날 때 하나의 프로세스를 정지하고 다른 프로세스의 수행을 시작하는 데까지는 시간이 소요되는데,
 이 시간을 `디스패치 지연(dispatch latency) 시간`이라고 부른다.
+
+## 스케줄링 기준 (Scheduling Criteria)
+- CPU 이용률(Utilization): 어느 기간 동안 또는 특정 SNAPSHOT에서의 CPU의 이용률.
+- 처리량(Throughput): 단위 시간당 완료된 프로세스의 개수.
+- 총처리 시간(Turnaround Time): 프로세스가 생성되어 작업을 마치고 종료될 때까지 걸린 시간.
+- 대기 시간(Waiting Time): 대기 시간은 프로세스가 준비 큐에서 대기하면서 보낸 시간의 합.
+- 응답 시간(Response Time): 하나의 Request를 제출한 후 첫 번째 Response가 나올 때까지의 시간.
+
+>`CPU Utilization, Throughput을 최대화`<br> `Turaround Time, Waiting Time, Response Time을 최소화`
