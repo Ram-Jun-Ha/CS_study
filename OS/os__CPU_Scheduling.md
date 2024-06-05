@@ -18,3 +18,9 @@
 - 프로세스의 실행은 CPU Burst로 시작되며 `CPU burst-I/O burst - CPU burst - ..... `순으로 순차적으로 burst가 발생한다.
 - 마지막 CPU burst는 실행을 종료하기 위한 시스템 요청과 함께 끝난다.
 
+>CPU burst : 프로그램 실행 중 CPU 연산(계산 작업)이 연속적으로 실행되는 상황<br>
+>I/O burst : 프로그램 실행 중 I/O 장치의 입출력이 이루어지는 상황
+
+## CPU 스케줄러(CPU Scheduler)
+- `CPU가 유휴 상태`가 될 때마다, 운영체제는 `Ready Queue에 있는 프로세스 중에서 하나를 선택해 실행`해야 하며, 선택은 `CPU 스케줄러(CPU Scheduler)`에 의해 수행된다.
+- CPU 스케줄러는 실행 준비가 되어 있는 메모리 내의 프로세스 중에서 선택하여, 이들 중 하나에게 CPU를 할당한다.
