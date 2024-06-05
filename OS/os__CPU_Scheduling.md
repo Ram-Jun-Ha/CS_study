@@ -66,6 +66,7 @@
 이 시간을 `디스패치 지연(dispatch latency) 시간`이라고 부른다.
 
 ## 스케줄링 기준 (Scheduling Criteria)
+![alt text](img/os_sceduling_02.png)
 - CPU 이용률(Utilization): 어느 기간 동안 또는 특정 SNAPSHOT에서의 CPU의 이용률.
 - 처리량(Throughput): 단위 시간당 완료된 프로세스의 개수.
 - 총처리 시간(Turnaround Time): 프로세스가 생성되어 작업을 마치고 종료될 때까지 걸린 시간.
