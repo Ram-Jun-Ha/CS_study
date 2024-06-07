@@ -13,7 +13,7 @@
         - waiting(대기) : 특정 이벤트가 발생하길 기다리는 상태
         - terminated(종료) : 프로세스가 실행을 끝마친 상태
 
-    ![img.png](img%2Fimg.png)
+![img.png](img/img.png)
 
 
 2. 쓰레드
@@ -26,3 +26,7 @@
     - 프로세스는 메모리에 올라갈 때 운영체제로부터 시스템 자원을 Code/Data/Stack/Heap 형식으로 할당받음
         - 각각 독립된 메모리 영역을 할당해주어 각 프로세스 간 IPC, LPC 등의 방법들로 접근
     - 쓰레드는 프로세스 내 stack을 할당 받고 프로세스의  Code/Data/Heap을 공유하여 사용
+
+참고 : https://inpa.tistory.com/entry/👩‍💻-프로세스-⚔️-쓰레드-차이,
+https://velog.io/@aeong98/운영체제OS-프로세스와-스레드,
+https://velog.io/@raejoonee/프로세스와-스레드의-차이
