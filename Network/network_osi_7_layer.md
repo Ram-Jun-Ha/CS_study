@@ -52,3 +52,11 @@
 ---
 
 ![alt text](img/network_osi_7_layer_02.png)
+
+---
+
+## ✨TCP/IP 4계층
+OSI 7계층 - 네트워크 전송 시 데이터 표준
+TCP/IP 4계층 - 이론을 실제 사용하는 인터넷 표준
+
+![alt text](img/network_osi_7_layer_03.png)
