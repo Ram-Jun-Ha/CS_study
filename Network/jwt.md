@@ -16,5 +16,21 @@ JWT와 관련된 표준으로는 JSON Web Signature (JWS)는 JSON 데이터 구�
 
 JWS (JSON Web Signature)은 **JSON으로 전자 서명을하여 URL-safe 문자열로 표현한 것**이며, 
 JWE (JSON Web Encryption)는 **JSON을 암호화하여 URL-safe 문자열로 표현한 것**이다.
+
 서명은 서명할 때 사용한 키를 사용하여 JSON이 손상되지 않았는지 확인 할 수 있도록 하는 것이며, 
-URL Safe는 말 그대로 URL에 포함 할 수없는 문자를 포함하지 않는 것을 뜻한다.
+URL Safe는 말 그대로 URL에 포함 할 수 없는 문자를 포함하지 않는 것을 뜻한다.
+
+### (2) 토큰의 구성
+
+<p align="center">
+<img src="./img/jwt2.png" alt="img1" />
+</p>
+
+JWT는 세 파트로 나누어지며, 각 파트는 점로 구분하여 표현된다. 순서대로 헤더 (Header), 페이로드 (Payload), 서명 (Sinature)로 구성된다.
+
+Header는 토큰의 타입과 해시 암호화 알고리즘으로 구성되어 있습니다. 첫 번째는 토큰의 유형 (JWT)을 나타내고, 두 번째는 HMAC, SHA256 또는 RSA와 같은 해시 알고리즘을 나타내는 부분이다.
+
+Payload는 토큰에 담을 클레임(claim) 정보를 포함하고 있습니다. Payload 에 담는 정보의 한 ‘조각’ 을 클레임이라고 부르고, 이는 name / value 의 한 쌍으로 이뤄져 있다. 토큰에는 여러 개의 클레임 들을 넣을 수 있다.
+
+마지막으로 Signature는 secret key를 포함하여 암호화되어 있다.
+
