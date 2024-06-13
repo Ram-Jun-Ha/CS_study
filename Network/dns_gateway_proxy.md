@@ -37,3 +37,11 @@
       > - 포워드 프록시는 클라이언트 요청을 직접 받아 인터넷을 통해 외부서버에 데이터를 요청함
       > - 하지만 클라이언트 요청이 특정 외부 서버로만 집중되는 경우가 드물어 로드밸런싱을 적용하기 어려움
       > - 리버스 프록시는 다수의 사용자가 내부의 서버에 접근을 할 때 요청을 분산시켜줄 수 있음
+
+참고 : https://www.youtube.com/watch?v=6fc9NAQkcv0,
+https://aws.amazon.com/ko/route53/what-is-dns/,
+https://hstory0208.tistory.com/entry/Gateway게이트웨이란-Router라우터란-각-개념과-차이점에-대해-알아보자,
+https://codedatasotrage.tistory.com/48,
+https://www.youtube.com/watch?v=lg-wHikZg0Q,
+https://docs.oracle.com/cd/E19636-01/819-3161/agcache.html,
+https://inpa.tistory.com/entry/NETWORK-📡-Reverse-Proxy-Forward-Proxy-정의-차이-정리
