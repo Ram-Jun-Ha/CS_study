@@ -81,3 +81,60 @@ Young 영역에서 발생하는 GC를 **Minor GC**, Old 영역에서 발생하�
 O앞서 객체가 살아남을 때마다 생존값이 +1이 되고 이것이 임계값에 도달하면 Old 영역으로 옮겨지게 되고, Old 영역이 꽉 차면 Major GC가 발생한다.
 
 Major GC는 데이터가 가득 차면 GC를 실행하는 단순한 방식이며, Old 영역이 상대적으로 큰 공간을 갖고 있기 때문에 GC 실행에 있어 Minor GC보다 많은 시간이 걸리고 이 부분에서 stop the world 문제가 발생할 수 있다.
+
+### GC 알고리즘
+
+위에서 언급한 시간 지연 문제를 해소하기 위한 다양한 알고리즘들이 개발되어 왔다.
+
+<p align="center">
+<img src="./img/6.png" alt="img1" />
+</p>
+
+#### (1) Serial GC
+
+서버의 CPU 코어가 1개일 때 사용하기 위해 개발된 가장 단순한 GC이며, GC를 처리하는 스레드가 싱글 스레드라서 stop the world 시간이 가장 길다.
+
+Minor GC 에는 Mark-Sweep을 사용하고, Major GC에는 Mark-Sweep-Compact를 사용한다.
+보통 실무에서 사용하는 경우는 없다. (디바이스 성능이 안좋아서 CPU 코어가 1개인 경우에만 사용) 
+
+#### (2) Parallel GC 
+
+Java 8의 디폴트 GC로, Serial GC와 기본적인 알고리즘은 같지만, **Young 영역의 Minor GC를 멀티 스레드로 수행한다.** (Old 영역은 여전히 싱글 쓰레드) Serial GC에 비해 stop the world 시간이 감소된다.
+
+이것을 개선해서 Old 영역에서도 멀티 스레드로 GC를 수행하는 Parallel Old GC도 존재하며, 이를 위해 새로운 가비지 컬렉션 청소 방식인 **Mark-Summary-Compact** 방식을 이용한다.
+
+#### (3) CMS GC (Concurrent Mark Sweep)
+
+어플리케이션의 스레드와 GC 스레드가 동시에 실행되어 stop the world 시간을 최대한 줄이기 위해 고안된 GC지만 과정이 매우 복잡해지고 GC 대상을 파악하는 과정이 복잡한 여러단계로 수행되기 때문에 다른 GC 대비 CPU 사용량이 높으며, 메모리 파편화 문제로 인해 **Java 14부터 사용이 중지된다.**
+
+#### (4) G1 GC (Garbage First)
+
+<p align="center">
+<img src="./img/7.png" alt="img1" />
+</p>
+
+CMS GC를 대체하기 위해 jdk 7 버전에서 최초로 공개된 GC로,
+Java 9+ 버전의 디폴트 GC로 지정됐으며 기존의 Young, Old 영역 개념이 아닌 **Region**이라는 개념을 도입해서 수행한다.
+
+Region 개념은 전체 힙 영역을 Region이라는 영역으로 체스같이 분할하여 상황에 따라 Eden, Survivor, Old 등 역할을 고정이 아닌 동적으로 부여하는 개념이다.
+
+#### (5) Shenandoah GC
+
+
+<p align="center">
+<img src="./img/8.png" alt="img1" />
+</p>
+
+Java 12에서 공개됐으며 기존 CMS가 가진 단편화, G1이 가진 pause의 이슈를 해결하였다. 강력한 동시 처리성과 가벼운 GC 로직으로 힙 사이즈에 영향을 받지 않고 일정한 정지 시간이 소요되는 장점을 지녔다.
+
+#### (6) ZGC (Z Garbage Collector)
+
+<p align="center">
+<img src="./img/9.png" alt="img1" />
+</p>
+
+Java 15에 공개됐으며 대량의 메모리를 낮은 지연시간으로 처리하기 위해 디자인 된 GC다. 
+
+G1의 Region 처럼 ZGC는 ZPage라는 영역을 사용하며, G1의 Region은 크기가 고정인데 비해, ZPage는 2mb 배수로 동적으로 운영됨. (큰 객체가 들어오면 2^ 로 영역을 구성해서 처리)
+
+ZGC의 장점 중 하나는 힙 크기가 증가하더도 'stop-the-world'의 시간이 절대 10ms를 넘지 않는다는 것이다.
