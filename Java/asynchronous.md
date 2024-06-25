@@ -52,4 +52,105 @@ Futrue<T> submit(Callable<T> task)
 // 작업 처리 결과를 얻을 수 있도록 Future 리턴
 ```
 
-### 2) 
+### 2) Future 및 관련 인터페이스
+
+별도 스레드에서 수행되고 계산된 비동기 작업 결과를 `Future` 인터페이스에서 받을 수 있다. `get()` 메서드로 결과를 전달 받거나 `isDone()` 메서드로 작업이 완료되었는지 여부를 확인이 가능하다.
+
+```java
+@Slf4j
+public class FutureExample {
+    public static void main(String[] args) throws ExecutionException, InterruptedException {
+        ExecutorService es = Executors.newCachedThreadPool();
+
+        Future<String> future = es.submit(() -> {
+            Thread.sleep(2000);
+            log.info("비동기 처리");
+            return "하이";
+        });
+
+        log.info("단순 실행");
+        log.info(future.get()); 
+        // get()으로 결과를 받기 위해서는 별도 스레드가 block
+
+        es.shutdown();
+    }
+}
+
+// 처리 결과
+19:59:08.430 [main] INFO com.java.example.future.FutureExample - 단순 실행
+19:59:10.434 [pool-1-thread-1] INFO com.java.example.future.FutureExample - 비동기 처리
+19:59:10.434 [main] INFO com.java.example.future.FutureExample - 하이
+```
+
+`Future`의 경우 작업의 생성과 실행이 동시에 이루어지지만 `FutureTask`의 경우 작업의 생성과 실행을 분리할 수 있다.
+
+```java
+@Slf4j
+public class FutureExample {
+    public static void main(String[] args) throws ExecutionException, InterruptedException {
+        ExecutorService es = Executors.newCachedThreadPool();
+
+        // 작업 생성
+        FutureTask<String> futureTask = new FutureTask<>(() -> {
+            Thread.sleep(2000);
+            log.info("비동기 처리");
+            return "하이";
+        });
+
+        // 별도 추가 실행이 필요
+        es.execute(futureTask);
+        
+        log.info("단순 실행");
+        log.info(futureTask.get());
+
+        es.shutdown();
+    }
+}
+
+// 처리 결과
+20:14:41.464 [main] INFO com.java.playground.future.FutureExample - 단순 실행
+20:14:43.466 [pool-1-thread-1] INFO com.java.playground.future.FutureExample - 비동기 처리
+20:14:43.468 [main] INFO com.java.playground.future.FutureExample - 하이
+```
+
+`CompletableFuture`는 `Future`와 다르게 외부에서 완료 시킬 수 있고 콜백 등록, `Future` 조합 사용이 가능한 클래스다. JDK 1.8 버전부터 추가되었다. 아래의 두 함수를 예시로 들어보자.
+
+```java
+// 1초 대기 후, 20 반환
+public static int f1(){
+   Thread.sleep(1000);
+   return 20;
+}
+
+// 2초 대기 후, 30 반환
+public static int f2(){
+   Thread.sleep(2000);
+   return 30;
+}
+```
+```java
+@Slf4j
+public class CompletableFutureExample {
+    public static void main(String[] args) throws ExecutionException, InterruptedException {
+        ExecutorService es = Executors.newCachedThreadPool();
+
+        // complete() 메소드에 콜백 함수로 정적 메소드 기입 가능
+        CompletableFuture<Integer> a = new CompletableFuture<>();
+        CompletableFuture<Integer> b = new CompletableFuture<>();
+        es.submit(() -> a.complete(f1()));
+        es.submit(() -> b.complete(f2()));
+
+        log.info("합 : {}", a.get() + b.get());
+
+        log.info("종료");
+
+        es.shutdown();
+    }
+}
+
+// 처리 결과
+20:24:24.109 [main] INFO com.java.playground.future.CompletableFutureExample - 합 : 50
+20:24:24.112 [main] INFO com.java.playground.future.CompletableFutureExample - 종료
+```
+
+
